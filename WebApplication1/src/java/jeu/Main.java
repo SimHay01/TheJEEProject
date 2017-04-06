@@ -11,6 +11,25 @@ package jeu;
  * TEST SIMON
  */
 public class Main {
+    
+    private Jeu jeu; // Le jeu
+    private int joueur; // Le joueur qui joue (1 ou 2)
+    private int action; // L'action du joueur
+    
+    public Main(){
+        
+        jeu = new Jeu();
+        jeu.initialisation();
+        
+        // Tant que le jeu n'est pas fini, on fait des actions
+        while (!jeu.statut().equals("fini")) {
+            
+            // joueur le jeu
+            
+            
+        }
+        
+    }
 
     /**
      * @param args the command line arguments
