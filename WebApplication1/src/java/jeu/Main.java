@@ -8,6 +8,7 @@ package jeu;
 /**
  *
  * @author Simon Hay
+ * TEST SIMON
  */
 public class Main {
 

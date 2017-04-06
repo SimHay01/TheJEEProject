@@ -10,10 +10,12 @@ package jeu;
  * @author Simon Hay
  */
 public interface API {
+    
     void initialisation();
     boolean action(int joueur, int action);
     String affichage();
     String statut();
     int derniereAction();
     int vainqueur();
+    
 }
