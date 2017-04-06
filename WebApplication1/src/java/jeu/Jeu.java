@@ -13,7 +13,7 @@ import static java.lang.Boolean.FALSE;
  */
  
 public class Jeu implements API{
-  
+  private int state=1;
 
     /**
      * Permet de mettre des 0 dans toutes les cases de la grille
@@ -43,7 +43,18 @@ public class Jeu implements API{
 
     @Override
     public String statut() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String ret="";
+        if (state ==0){
+            ret="fini";
+        }
+        else if (state ==1){
+            ret="joueur1";
+        }
+        else if (state ==2){
+            ret="joueur2";
+        }
+        return(ret);
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override

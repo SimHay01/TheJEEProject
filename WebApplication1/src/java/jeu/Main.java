@@ -15,7 +15,7 @@ public class Main {
     private Jeu jeu; // Le jeu
     private int joueur; // Le joueur qui joue (1 ou 2)
     private int action; // L'action du joueur
-    
+    int tableau[][];
     public Main(){
         
         jeu = new Jeu();
