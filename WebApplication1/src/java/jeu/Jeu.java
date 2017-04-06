@@ -5,11 +5,15 @@
  */
 package jeu;
 
+import static java.lang.Boolean.FALSE;
+
 /**
  *
  * @author Simon Hay
  */
+ 
 public class Jeu implements API{
+  
 
     @Override
     public void initialisation() {
@@ -38,7 +42,16 @@ public class Jeu implements API{
 
     @Override
     public int vainqueur() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+     //  throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+      int resultat;
+      boolean victoire=FALSE;
+        if (victoire == FALSE){
+            resultat = 0;
+        }
+        else {
+            resultat = 1;
+        }
+        return resultat;
     }
-    
-}
+ }
+   
