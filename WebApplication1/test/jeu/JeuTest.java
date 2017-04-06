@@ -18,8 +18,11 @@ import static org.junit.Assert.*;
  * @author Simon Hay
  */
 public class JeuTest {
+    
     private Jeu jeu;
+    
     private ArrayList<Action> actions;
+    
     public JeuTest(ArrayList<Action> actions) {
         this.actions = actions;
         jeu = new Jeu();
@@ -35,6 +38,11 @@ public class JeuTest {
             assertEquals(jeu.action(action.getJoueur(),action.getAction()),action.isResult());
             
         }
+    }
+    
+    @Test
+    public void nbJoueur(){
+        
     }
     
 }

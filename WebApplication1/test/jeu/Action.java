@@ -13,6 +13,8 @@ public class Action {
     private int joueur;
     private int action;
     private boolean result;
+    
+    
     public Action( int joueur, int action, boolean result){
         this.joueur = joueur;
         this.action = action;
