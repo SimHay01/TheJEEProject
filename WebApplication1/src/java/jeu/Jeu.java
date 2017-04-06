@@ -42,13 +42,11 @@ public class Jeu implements API{
         
         int vainqueur;
         
-        for (int i=colonne; i=colonne; i) {
             for (int j=5; j>=0; j--){
-                if (grille[i][j] == 0) {
-                    grille[i][j] = joueur;
+                if (grille[colonne][j] == 0) {
+                    grille[colonne][j] = joueur;
                     break;
                 }                
-            }
         }
         
         
@@ -98,11 +96,11 @@ public class Jeu implements API{
         if (gagne(joueur, posX, posY), grille) {
             return joueur; // Retourne le joueur qui a gagné            
         } else {
-            if (cpt = 42) {
+            if (cpt == 42) {
                 return 0; // Match nul
             } else {
                 cpt++; // Coup suivant
-                return null;
+                return 1000;
             }            
         }
                 
