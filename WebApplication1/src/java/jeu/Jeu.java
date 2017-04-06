@@ -14,16 +14,16 @@ import static java.lang.Boolean.FALSE;
  
 public class Jeu implements API{
   private int state=1;
+  int[][] grille; // Définition de la grille
 
     /**
      * Permet de mettre des 0 dans toutes les cases de la grille
      */
     @Override
     public void initialisation() {       
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        
-        int[][] grille = new int[5][]; // Grille avec 6 lignes
-        for (int i; i <= 6; i++){ // Ajout de 7 zéros dans chacune des lignes
+         
+        grille = new int[5][]; // Grille avec 6 lignes
+        for (int i = 0; i <= 6; i++){ // Ajout de 7 zéros dans chacune des lignes
            grille[i] = new int[7];          
         }
         
@@ -31,9 +31,29 @@ public class Jeu implements API{
         
     }
 
+    /**
+     * Permet de gérer les actions du joueur
+     * @param joueur Le joueur
+     * @param colonne La position en abscisse où le joueur a mis son pion
+     * @return L'état de validation de l'action
+     */
     @Override
-    public boolean action(int joueur, int action) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean action(int joueur, int colonne) {
+        
+        int vainqueur;
+        
+        for (int i=colonne; i=colonne; i) {
+            for (int j=5; j>=0; j--){
+                if (grille[i][j] == 0) {
+                    grille[i][j] = joueur;
+                    break;
+                }                
+            }
+        }
+        
+        
+        vainqueur = vainqueur(); // Soit : 1, 2, 3, null
+        
     }
 
     @Override
@@ -63,24 +83,34 @@ public class Jeu implements API{
     }
     
     /**
-     * 
-     * @return 
+     * Renvoit le résultat de la partie
+     * 1 : J1 a gagné
+     * 2 : J2 a gagné
+     * 0 : match nul
+     * @return Le résultat de la partie
      */
     @Override
     public int vainqueur() {
      //  throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-      int resultat;
-      boolean victoire=FALSE;
-        if (victoire == FALSE){
-            resultat = 0;
+
+        int cpt = 0; // Compte le nombre de coups joués
+        
+        if (gagne(joueur, posX, posY), grille) {
+            return joueur; // Retourne le joueur qui a gagné            
+        } else {
+            if (cpt = 42) {
+                return 0; // Match nul
+            } else {
+                cpt++; // Coup suivant
+                return null;
+            }            
         }
-        else {
-            resultat = 1;
-        }
-        return resultat;
+                
+            
+     
     }
     
-        /**
+    /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
