@@ -15,9 +15,20 @@ import static java.lang.Boolean.FALSE;
 public class Jeu implements API{
   
 
+    /**
+     * Permet de mettre des 0 dans toutes les cases de la grille
+     */
     @Override
-    public void initialisation() {
+    public void initialisation() {       
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        int[][] grille = new int[5][]; // Grille avec 6 lignes
+        for (int i; i <= 6; i++){ // Ajout de 7 zéros dans chacune des lignes
+           grille[i] = new int[7];          
+        }
+        
+        System.out.println("toto");
+        
     }
 
     @Override
@@ -56,6 +67,14 @@ public class Jeu implements API{
             resultat = 1;
         }
         return resultat;
+    }
+    
+        /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        Jeu jeu = new Jeu();
+        jeu.initialisation();
     }
  }
    
