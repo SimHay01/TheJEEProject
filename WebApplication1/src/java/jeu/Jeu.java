@@ -13,7 +13,7 @@ import static java.lang.Boolean.FALSE;
  */
  
 public class Jeu implements API{
-  private int Statut;
+  private int state=1;
 
     @Override
     public void initialisation() {
@@ -32,15 +32,17 @@ public class Jeu implements API{
 
     @Override
     public String statut() {
-        if statut ==0{
-            return("fini");
+        String ret="";
+        if (state ==0){
+            ret="fini";
         }
-        else if statut ==1{
-            return("joueur1");
+        else if (state ==1){
+            ret="joueur1";
         }
-        else if statut ==2{
-            return("joueur2");
+        else if (state ==2){
+            ret="joueur2";
         }
+        return(ret);
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
