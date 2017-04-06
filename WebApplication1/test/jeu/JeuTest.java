@@ -25,6 +25,9 @@ public class JeuTest {
         jeu = new Jeu();
     }
     
+    /**
+     * 
+     */
     @Test
     public void testJeu() {
        jeu.initialisation();
