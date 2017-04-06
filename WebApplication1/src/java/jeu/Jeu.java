@@ -39,7 +39,11 @@ public class Jeu implements API{
     public int derniereAction() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+    
+    /**
+     * 
+     * @return 
+     */
     @Override
     public int vainqueur() {
      //  throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

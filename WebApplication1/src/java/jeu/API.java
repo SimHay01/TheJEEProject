@@ -24,7 +24,7 @@ public interface API {
     int derniereAction();
     
 
-     int vainqueur()       ;
+     int vainqueur();
     
     
 }
