@@ -5,6 +5,8 @@
  */
 package jeu;
 
+import static java.lang.Boolean.FALSE;
+
 /**
  *
  * @author Simon Hay
@@ -12,10 +14,17 @@ package jeu;
 public interface API {
     
     void initialisation();
+    
     boolean action(int joueur, int action);
     String affichage();
+    
     String statut();
+    
+       
     int derniereAction();
-    int vainqueur();
+    
+
+     int vainqueur()       ;
+    
     
 }
