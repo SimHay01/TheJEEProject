@@ -16,16 +16,25 @@ public class Main {
     private int joueur; // Le joueur qui joue (1 ou 2)
     private int action; // L'action du joueur
     int tableau[][];
+    private String statut;
+    boolean isValide = false;
+    
+    
     public Main(){
         
         jeu = new Jeu();
+        
+        // Grille à 0, joueur à 1, statut à "Joueur 1"
         jeu.initialisation();
         
         // Tant que le jeu n'est pas fini, on fait des actions
         while (!jeu.statut().equals("fini")) {
             
-            // joueur le jeu
+            while (!isValide){
+                isValide = jeu.action(joueur, action);
+            }
             
+            jeu.changerJoueur(joueur);
             
         }
         

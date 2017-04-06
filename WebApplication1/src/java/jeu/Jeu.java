@@ -5,16 +5,17 @@
  */
 package jeu;
 
-import static java.lang.Boolean.FALSE;
-
 /**
  *
  * @author Simon Hay
  */
  
 public class Jeu implements API{
-  private int state=1;
   int[][] grille; // Définition de la grille
+  private int vainqueur = 0;
+  private String statut;
+  private int joueur;
+  private int derniereAction = 0;
 
     /**
      * Permet de mettre des 0 dans toutes les cases de la grille
@@ -22,14 +23,33 @@ public class Jeu implements API{
     @Override
     public void initialisation() {       
          
-        grille = new int[5][]; // Grille avec 6 lignes
-        for (int i = 0; i <= 6; i++){ // Ajout de 7 zéros dans chacune des lignes
-           grille[i] = new int[7];          
+        statut = "Joueur 1";
+        joueur = 1;
+        
+        //grille = new int[5][]; // Grille avec 6 lignes
+        //for (int i = 0; i <= 6; i++){ // Ajout de 7 zéros dans chacune des lignes
+        //   grille[i] = new int[5];          
+        //}
+        
+        int colonnes = 7;
+        int lignes = 6;
+        
+        int[][] grille = new int[lignes][colonnes];
+        
+        for(int i = 0; i<lignes; i++){            
+            for(int j = 0; j<colonnes; j++){
+                grille[i][j] = 0;
+            }
         }
         
-        System.out.println("toto");
-        
+//        for(int i = 0; i<lignes; i++){            
+//            for(int j = 0; j<colonnes; j++){
+//                System.out.print(grille[i][j]);
+//            }            
+//            System.out.println();
+//        }
     }
+
 
     /**
      * Permet de gérer les actions du joueur
@@ -40,70 +60,63 @@ public class Jeu implements API{
     @Override
     public boolean action(int joueur, int colonne) {
         
-        int vainqueur;
+        int cpt = 0; // Nombre de coups joués  
+        boolean isValide = false; // Validité de l'action
         
+        if (colonne < 0 && colonne > 6){
+            isValide = false;
+        } else {
+            isValide = true;
             for (int j=5; j>=0; j--){
                 if (grille[colonne][j] == 0) {
                     grille[colonne][j] = joueur;
-                    break;
-                }                
+                    derniereAction = colonne;
+                    if (gagne(colonne, j, grille, joueur)){
+                        vainqueur = joueur;
+                        vainqueur();
+                        statut = "fini";
+                    } else if (cpt == 42) {
+                        vainqueur = 0;
+                        vainqueur(); 
+                        statut = "fini";
+                    } else {
+                       cpt++; 
+                    }                                
+                }
+                break;
+            }
         }
-        
-        
-        vainqueur = vainqueur(); // Soit : 1, 2, 3, null
+
+        return isValide;
         
     }
 
     @Override
     public String affichage() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return ("Joueur " + statut() + " : Colonne " + derniereAction());
     }
 
+    /**
+     * Retourne le statut du jeu : joueur 1, joueur 2 ou partie finie.
+     * @return Le statut du jeu
+     */
     @Override
     public String statut() {
-        String ret="";
-        if (state ==0){
-            ret="fini";
-        }
-        else if (state ==1){
-            ret="joueur1";
-        }
-        else if (state ==2){
-            ret="joueur2";
-        }
-        return(ret);
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.statut;
     }
 
     @Override
     public int derniereAction() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.derniereAction;
     }
-    
+
     /**
-     * Renvoit le résultat de la partie
-     * 1 : J1 a gagné
-     * 2 : J2 a gagné
-     * 0 : match nul
-     * @return Le résultat de la partie
+     * Vainqueur du jeu : 1 pour J1, 2 pour J2, 0 pour match nul
+     * @return Le vainqueur
      */
     @Override
     public int vainqueur() {
-     //  throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-
-        int cpt = 0; // Compte le nombre de coups joués
-        
-        if (gagne(joueur, posX, posY), grille) {
-            return joueur; // Retourne le joueur qui a gagné            
-        } else {
-            if (cpt == 42) {
-                return 0; // Match nul
-            } else {
-                cpt++; // Coup suivant
-                return 1000;
-            }            
-        }
-           
+        return this.vainqueur;
     }
     
         public boolean parcours (int x, int y){
@@ -151,6 +164,14 @@ public class Jeu implements API{
             gagne=true;
          }
         return(gagne);
+    }
+    
+    public void changerJoueur(int joueur){
+        if (joueur == 1) {
+            joueur = 2;
+        } else {
+            joueur = 1;
+        }
     }
     
     /**
