@@ -103,9 +103,54 @@ public class Jeu implements API{
                 return 1000;
             }            
         }
-                
-            
-     
+           
+    }
+    
+        public boolean parcours (int x, int y){
+        boolean dansTableau = false;
+        if (x >=1 && x<=7 && y>=1 && y<=6){
+            dansTableau=true;
+        }
+        return(dansTableau);
+    }
+    
+    public boolean gagne(int x, int y, int table[][], int joueur){
+        boolean gagne=false;
+        int cptH=0;
+        int cptV=0;
+        int cptDD=0; // droite quand on monte
+        int cptDG=0; /// gauche quand on monte
+        
+        for (int i=1; i<=3; i++){
+            if (parcours(x,y-i)){
+                cptV+=1;
+            }
+            if (parcours(x,y+i)){
+                cptV+=1;
+            }
+            if (parcours(x-i,y)){
+                cptH+=1;
+            }
+            if (parcours(x+i,y)){
+                cptH+=1;
+            }
+            if (parcours(x-i,y-i)){
+                cptDD+=1;
+            }
+            if (parcours(x+i,y+i)){
+                cptDD+=1;
+            }
+            if (parcours(x+i,y-i)){
+                cptDG+=1;
+            }
+            if (parcours(x-i,y+i)){
+                cptDG+=1;
+            }
+        }
+        if (cptDG>=3 || cptDD>=3 || cptH>=3 || cptV>=3){
+            gagne=true;
+         }
+        return(gagne);
     }
     
     /**
